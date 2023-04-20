@@ -1206,7 +1206,7 @@ body {
 .modal-window {
   position: absolute;
   max-width: 392px;
-  width: 100%;
+  width: calc(100% - 30px);
   max-height: 586px;
   height: 100%;
   top: 50%;
