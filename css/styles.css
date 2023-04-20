@@ -43,13 +43,7 @@ body {
   text-decoration: none;
 }
 
-/* .container {
-  max-width: 1158px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: 15px;
-  padding-left: 15px;
-} */
+
 .container {
   padding-left: 15px;
   padding-right: 15px;
@@ -77,14 +71,17 @@ body {
   stroke: var(--header-text-color);
 }
 /* HEADER */
+
+
 @media screen and (max-width: 767px) {
   .menu {
-    display: none;
-  }
-  .contact-info {
-    display: none;
-  }
+  display: none;
 }
+.contact-info {
+  display: none;
+}
+}
+
 .page-header-container {
   display: flex;
   align-items: center;
@@ -115,6 +112,9 @@ body {
   color: var(--header-text-color);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
+
 /* MOBiLE MENU */
 @media screen and (max-width: 767px) {
   .mobile-menu {
@@ -125,7 +125,8 @@ body {
     width: 100%;
     height: 100%;
     background-color: var(--white-text-background);
-
+    display: flex;
+    overflow-y: scroll;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -149,6 +150,9 @@ body {
     padding-top: 80px;
     padding-left: 40px;
     padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .mobile-menu-close-btn {
     position: absolute;
@@ -190,13 +194,21 @@ body {
   .mobile-menu-item:not(:last-child) {
     margin-bottom: 40px;
   }
+  .mobile-menu-link-list {
+    margin-bottom: 40px;
+  }
   .mobile-menu-link:hover,
   .mobile-menu-link:focus {
     color: var(--active-btn-color);
   }
-  .mobile-menu-contact-info {
-    margin-top: 284px;
+  .mobile-menu-active::after {
+    content: "";
+     color: var(--active-btn-color);    
+ }
+  .mobile-menu-active {
+    color: var(--active-btn-color);
   }
+    
   .mobile-menu-contacts:not(:last-child) {
     margin-bottom: 40px;
   }
@@ -204,11 +216,11 @@ body {
   .mobile-menu-phone-number {
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
-    line-height: 1.11;
+    font-size: 24px;
+    line-height: 1.01;
     letter-spacing: 0.02em;
     text-transform: capitalize;
-    color: var(--main-text-color);
+    color: var(--active-btn-color);
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .mobile-menu-contact-mail {
@@ -236,7 +248,7 @@ body {
   .mobile-menu-social-list {
     display: flex;
     flex-direction: row;
-    gap: 56px;
+    gap: 28px;
   }
   .mobile-menu-social-list-item {
     width: 40px;
@@ -261,6 +273,18 @@ body {
   .mobile-menu-social-list-icon {
     fill: var(--background-icons);
   }
+}
+
+
+@media screen and (min-width: 408px) and (max-width: 767px) {
+ 
+  .mobile-menu-phone-number {
+    font-size: 36px;
+    line-height: 1.11;
+}
+.mobile-menu-social-list {
+  gap: 56px;
+}
 }
 
 @media screen and (min-width: 768px) {
@@ -482,6 +506,10 @@ body {
   }
 }
 @media screen and (min-width: 1158px) {
+  .hero {
+    padding-top: 188px;
+    padding-bottom: 188px;
+  }
   .slogan {
     margin-bottom: 48px;
   }
@@ -553,6 +581,9 @@ body {
   color: var(--main-text-color);
 }
 @media screen and (min-width: 768px) {
+  .items-header {
+    text-align: start;
+  }
   .advantages-menu {
     flex-direction: row;
     flex-wrap: wrap;
@@ -772,6 +803,7 @@ body {
 }
 .costumers-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 72px 16px;
 }
@@ -805,7 +837,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 24px;
+    gap: 72px 24px;
   }
   .costumers-list-icon {
     width: 104px;
@@ -988,6 +1020,7 @@ body {
   }
   .tablet-footer {
     display: flex;
+    margin-bottom: 72px;
         
   }
   .footer-social-list-container {
@@ -1004,7 +1037,7 @@ body {
   }
   .footer-form-label-text {
     text-align: start;
-    margin-top: 72px;
+    
   }
   .footer-form {
     flex-direction: row;
@@ -1018,6 +1051,12 @@ body {
   
  }
  @media screen and (min-width: 1158px) {
+  .logo-footer-container {
+    margin-right: 0;
+  }
+  .tablet-footer {
+    margin-bottom: 0;
+  }
 
   .page-footer {
   padding-bottom: 100px;
@@ -1166,8 +1205,10 @@ body {
 }
 .modal-window {
   position: absolute;
-  min-width: 392px;
-  height: 586px;
+  max-width: 392px;
+  width: 100%;
+  max-height: 586px;
+  height: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1176,7 +1217,10 @@ body {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding: 72px 16px 24px 16px;
+  overflow: scroll;
+
 }
+
 .modal-close-btn {
   position: absolute;
   top: 24px;
@@ -1305,7 +1349,8 @@ body {
 
 .modal-form-submit {
   font-family: "Roboto", sans-serif;
-  width: 169px;
+  max-width: 169px;
+  width: 100%;
   align-self: center;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -1357,6 +1402,8 @@ body {
 }
 @media screen and (min-width: 768px) {
   .modal-window {
+    max-width: 408px;
+    width: 100%;
     padding: 72px 24px 24px 24px;
   }
 }
